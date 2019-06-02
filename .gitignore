@@ -30,10 +30,4 @@
 *.exe
 *.out
 *.app
-/.vs
-/Debug
-/.gitattributes
-/LeetCode.vcxproj.user
-/LeetCode.vcxproj.filters
-/LeetCode.vcxproj
-/LeetCode.sln
+
