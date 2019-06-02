@@ -58,7 +58,7 @@ public:
 				tail = new ListNode(head->val);
 				start = tail;
 			};
-			if (idx > m and idx <= n) {
+			if (idx > m && idx <= n) {
 				auto tmp = new ListNode(head->val);
 				tmp->next = start;
 				start = tmp;
@@ -96,7 +96,7 @@ public:
 
 	void levelOrderHelper(vector<vector<int>>& nums, TreeNode* root , int layer) {
 		if (root == NULL) return;
-		if (nums.size() < layer+1) { 
+		if (nums.size() < layer + 1) { 
 			nums.push_back(vector<int>()); 
 		}
 		nums[layer].push_back(root->val);
@@ -104,15 +104,125 @@ public:
 		levelOrderHelper(nums, root->right, layer + 1);
 	}
 	
+	//#143 Reorder List
+	void reorderList(ListNode* head) {
+		int idx = 0 , len=0;
+		ListNode* ohead = NULL;
+		ListNode* otail = ohead;
+		ListNode* ehead = new ListNode(0);
+		ListNode* etail = ehead;
+		ListNode* prehead = head;
+		while (head) { len++;head = head->next; }
+		if (len < 2) return;
+		head = prehead;
+		while (head) {
+			if (idx>=len/2) {
+				if (ohead) {
+					ohead = new ListNode(head->val);
+					ohead->next =otail;
+					otail = ohead;
+				}
+				else 
+					ohead = new ListNode(head->val);
+					otail = ohead;
+			}
+			else {
+				etail->next = new ListNode(head->val);
+				etail = etail->next;
+			}
+			idx++;
+			head = head->next;
+		}
+		head = prehead;
+		if(ehead)ehead = ehead->next;
+		if(ehead)ehead = ehead->next;
+		while (ohead || ehead) {
+			if (ohead) {
+				head->next = new ListNode(ohead->val);
+				ohead = ohead->next;
+				head = head->next;
+			}
+			if (ehead) { 
+				head->next = new ListNode(ehead->val);
+				ehead = ehead->next;
+				head = head->next;
+			}
+		}
+	}
+
+	//#147 Insertion Sort List
+	ListNode* insertionSortList(ListNode* head) {
+		if (!head || !head->next) return head;
+		auto fast = head->next, slow = head;
+		while (fast && fast->next) {
+			slow = slow->next;
+			fast = fast->next->next;
+		}
+		fast = slow->next;
+		slow->next = NULL;
+		head = insertionSortList(head);
+		fast = insertionSortList(fast);
+		ListNode* cur = new ListNode(0);
+		ListNode* tail = cur;
+		while (head && fast) {
+			if (head->val < fast->val) {
+				tail->next = head;
+				head = head->next;
+			}
+			else {
+				tail->next = fast;
+				fast = fast->next;
+			}
+			tail = tail->next;
+		}
+		if (head)tail->next = head;
+		else tail->next = fast;
+
+		return cur->next;
+	}
+
+	//#148 Sort List
+	ListNode* sortList(ListNode* head) {
+		if (!head || !head->next) return head;
+		auto fast = head->next, slow = head;
+		while (fast && fast->next) {
+			slow = slow->next;
+			fast = fast->next->next;
+		}
+		fast = slow->next;
+		slow->next = NULL;
+		head = sortList(head);
+		fast = sortList(fast);
+		ListNode* cur = new ListNode(0);
+		ListNode* tail = cur;
+		while (head && fast) {
+			if (head->val < fast->val) {
+				tail->next = head;
+				head = head->next;
+			}
+			else {
+				tail->next = fast;
+				fast = fast->next;
+			}
+			tail = tail->next;
+		}
+		if (head)tail->next = head;
+		else tail->next = fast;
+
+		return cur->next;
+	}
+	
+
 };
 
 
 int main() {
-	string in1 = "(1,2,3,4,5,6)";
+	string in1 = "(1,2,3,5,6,4)";
 	string in2 = "(5,6,4)";
 	auto l1 = buildList(in1,',');
 	auto l2 = buildList(in2,',');
 	auto solver = new Solution();
-	printList(solver->reverseBetween(l1, 1,6));
+	l1 = solver->sortList(l1);
+	printList(l1);
 	return 0;
 }
