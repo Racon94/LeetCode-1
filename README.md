@@ -24,8 +24,8 @@ Solution :
 
 LeetCode source code to solves the problems
 
-'''cpp
+```c
 	auto solver = Solution() ;
 	auto ret = solver->method_name(args) ;
 	// output to check the answer. 
-'''
+```
