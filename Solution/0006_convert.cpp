@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 //#6 Zigzag conversion
 string Solution::convert(string s, int numRows) {

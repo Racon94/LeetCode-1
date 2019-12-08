@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 //#2 Add Two Numbers
 ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2) {

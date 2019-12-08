@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 //#143 Reorder List
 void reorderList(ListNode* head) {

@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 //#102 Binary Tree Level Order Traversa
 vector<vector<int>> Solution::levelOrder(TreeNode* root) {

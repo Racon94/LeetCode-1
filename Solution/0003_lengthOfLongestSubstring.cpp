@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 int Solution::lengthOfLongestSubstring(string s) {
 	int ch[129] = {};

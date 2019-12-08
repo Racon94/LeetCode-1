@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 //#101 Symmetric Tree
 bool Solution::isSymmetric(TreeNode* root) {
