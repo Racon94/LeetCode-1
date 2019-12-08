@@ -1,7 +1,7 @@
-#include "Solution.h"
+#include "../Solution.h"
 
-//#148 Sort List
-ListNode* sortList(ListNode* head) {
+//#147 Insertion Sort List
+ListNode* insertionSortList(ListNode* head) {
 	if (!head || !head->next) return head;
 	auto fast = head->next, slow = head;
 	while (fast && fast->next) {
@@ -10,8 +10,8 @@ ListNode* sortList(ListNode* head) {
 	}
 	fast = slow->next;
 	slow->next = NULL;
-	head = sortList(head);
-	fast = sortList(fast);
+	head = insertionSortList(head);
+	fast = insertionSortList(fast);
 	ListNode* cur = new ListNode(0);
 	ListNode* tail = cur;
 	while (head && fast) {

@@ -17,6 +17,12 @@ public:
 	//#2 Add Two Numbers
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
 
+	//#3 Longest Substring Without Repeating Characters
+	int lengthOfLongestSubstring(string s);
+
+	//#6 Zigzag conversion
+	string convert(string s, int numRows);
+
 	//#92 Reverse Linked List II
 	ListNode* reverseBetween(ListNode* head, int m, int n);
 

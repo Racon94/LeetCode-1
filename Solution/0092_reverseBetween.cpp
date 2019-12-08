@@ -1,4 +1,4 @@
-#include "Solution.h"
+#include "../Solution.h"
 
 //#92 Reverse Linked List II
 ListNode* Solution::reverseBetween(ListNode* head, int m, int n) {
